@@ -1,5 +1,6 @@
 package com.example.belajar.view
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -10,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.R
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.dimensionResource
@@ -61,5 +63,30 @@ fun HomeScreen(
                 .padding(innerPadding)
                 .fillMaxSize()
         )
+    }
+}
+@Composable
+fun HomeBody(
+    statusUiSiswa: StatusUiSiswa,
+    //edit 2.3 tambahkan parameter onSiswaClick
+    onSiswaValueClick: (Int) -> Unit,
+    retryAction: () -> Unit,
+    modifier: Modifier = Modifier
+){
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+    ){
+        when(statusUiSiswa){
+            is StatusUiSiswa.Loading -> LoadingScreen()
+            //edit 2.5 : tambahkan event onSiswaClick
+            is StatusUiSiswa.Success -> DaftarSiswa(itemSiswa = statusUiSiswa
+                .siswa,
+                onSiswaClick = {onSiswaClick(it.id)} )
+            is StatusUiSiswa.Error -> ErrorScreen(
+                retryAction,
+                modifier = modifier.fillMaxSize()
+            )
+        }
     }
 }
