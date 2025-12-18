@@ -7,12 +7,13 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import com.example.belajar.apiservice.ServiceApiSiswa
 
 interface ContainerApp {
     val repositoryDataSiswa : RepositoryDataSiswa
 }
 class DefaultContainerApp: ContainerApp{
-    private val baseurl = "http://10.0.2.2/umyTI"
+    private val baseurl = "http://10.0.2.2/umyTI/"
     val logging = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }
@@ -22,11 +23,12 @@ class DefaultContainerApp: ContainerApp{
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(baseurl)
         .addConverterFactory(
+            // Buat objek Json terlebih dahulu
             Json {
                 ignoreUnknownKeys = true
                 prettyPrint = true
                 isLenient = true
-            }.asConverterFactory("application/json".toMediaType())
+            }.asConverterFactory("application/json".toMediaType()) // Pastikan import okhttp3.MediaType.Companion.toMediaType
         )
         .client(klien)
         .build()

@@ -1,6 +1,7 @@
 package com.example.belajar.viewmodel
 
-import android.net.http.HttpException
+import retrofit2.HttpException
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -16,6 +17,7 @@ sealed interface StatusUiSiswa {
     object Loading : StatusUiSiswa
 }
 
+
 class HomeViewModel(private val repositoryDataSiswa: RepositoryDataSiswa):
     ViewModel() {
     var listSiswa: StatusUiSiswa by mutableStateOf(StatusUiSiswa.Loading)
@@ -24,6 +26,7 @@ class HomeViewModel(private val repositoryDataSiswa: RepositoryDataSiswa):
     init{
         loadSiswa()
     }
+
 
     fun loadSiswa(){
         viewModelScope.launch {

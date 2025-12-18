@@ -1,5 +1,6 @@
 package com.example.belajar.viewmodel.provider
 
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
@@ -12,6 +13,7 @@ fun CreationExtras.aplikasiDataSiswa(): AplikasiDataSiswa = (
             AplikasiDataSiswa
         )
 object PenyeidaViewModel {
+
     val Factory =viewModelFactory {
         initializer {
             HomeViewModel(aplikasiDataSiswa().container.repositoryDataSiswa)

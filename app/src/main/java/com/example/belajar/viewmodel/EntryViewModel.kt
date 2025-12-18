@@ -8,7 +8,6 @@ import com.example.belajar.modeldata.DetailSiswa
 import com.example.belajar.modeldata.UIStateSiswa
 import com.example.belajar.modeldata.toDataSiswa
 import com.example.belajar.repositori.RepositoryDataSiswa
-import okhttp3.Response
 
 
 class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa):
@@ -28,7 +27,7 @@ class EntryViewModel(private val repositoryDataSiswa: RepositoryDataSiswa):
     }
     suspend fun addSiswa() {
         if (validasiInput()) {
-            val sip: Response<Void> = repositoryDataSiswa.postDataSiswa(uiStateSiswa.detailSiswa.toDataSiswa())
+            val sip: retrofit2.Response<Void> = repositoryDataSiswa.postDataSiswa(uiStateSiswa.detailSiswa.toDataSiswa())
             if (sip.isSuccessful) {
                 println("Sukses Tambah Data : ${sip.message()}")
             }else{
