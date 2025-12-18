@@ -1,10 +1,13 @@
 package com.example.belajar.view
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -22,6 +25,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.belajar.modeldata.DataSiswa
 import com.example.belajar.uicontroller.route.DestinasiHome
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -115,6 +119,26 @@ fun ErrorScreen(retryAction: () -> Unit, modifier: Modifier = Modifier) {
             .padding(16.dp))
         Button(onClick = retryAction) {
             Text(stringResource(R.string.retry))
+        }
+    }
+}
+@Composable
+fun DaftarSiswa(
+    itemSiswa : List<DataSiswa>,
+    //edit 2.1 : tambahkab parameter onSiswaClick
+    onSiswaClick: (DataSiswa) -> Unit,
+    modifier: Modifier=Modifier
+){
+    LazyColumn(modifier = Modifier){
+        items(items = itemSiswa, key = {it.id}){
+                person ->
+            ItemSiswa(
+                siswa = person,
+                modifier = Modifier
+                    .padding(dimensionResource(id = R.dimen.padding_small))
+                    //edit 2.2 jadikan itemsiswa menjadi clickable()
+                    .clickable { onSiswaClick(person) }
+            )
         }
     }
 }
