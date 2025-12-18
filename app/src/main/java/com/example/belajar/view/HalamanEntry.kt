@@ -12,6 +12,8 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.belajar.modeldata.DetailSiswa
+import com.example.belajar.modeldata.UIStateSiswa
 import com.example.belajar.viewmodel.EntryViewModel
 import kotlinx.coroutines.launch
 
@@ -50,4 +52,14 @@ fun EntrySiswaScreen(
                 .fillMaxWidth()
         )
     }
+}
+
+@Composable
+fun EntrySiswaBody(
+    uiStateSiswa: UIStateSiswa,
+    onSiswaValueChange: (DetailSiswa) -> Unit,
+    onSaveClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+
 }
