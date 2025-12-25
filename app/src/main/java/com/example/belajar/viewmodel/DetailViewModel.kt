@@ -1,5 +1,8 @@
 package com.example.belajar.viewmodel
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.example.belajar.modeldata.DataSiswa
@@ -15,4 +18,12 @@ class DetailViewModel(savedStateHandle: SavedStateHandle, private val repository
 RepositoryDataSiswa
 ): ViewModel() {
 
+
+    private val idSiswa: Int = checkNotNull(savedStateHandle[DestinasiDetail.itemIdArg])
+    var statusUIDetail:StatusUIDetail by mutableStateOf(StatusUIDetail.Loading)
+        private set
+
+    init {
+        getSatuSiswa()
+    }
 }
