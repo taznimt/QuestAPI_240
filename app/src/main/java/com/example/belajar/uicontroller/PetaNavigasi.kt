@@ -12,9 +12,10 @@ import com.example.belajar.view.EntrySiswaScreen
 import com.example.belajar.view.HomeScreen
 
 @Composable
-fun DataSiswaApp(navController: NavHostController = rememberNavController(),
-                 modifier: Modifier
-){
+fun DataSiswaApp(
+    navController: NavHostController = rememberNavController(),
+    modifier: Modifier = Modifier
+) {
     HostNavigasi(navController = navController)
 }
 
@@ -22,19 +23,25 @@ fun DataSiswaApp(navController: NavHostController = rememberNavController(),
 fun HostNavigasi(
     navController: NavHostController,
     modifier: Modifier = Modifier
-){
-    NavHost(navController = navController, startDestination = DestinasiHome.route,
-        modifier = modifier ){
+) {
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = modifier
+    ) {
         composable(DestinasiHome.route) {
-            HomeScreen(navigateToItemEntry = { navController.navigate
-                (DestinasiEntry.route) },
-                navigateToItemUpdate = {
-//                  navController.navigate("${DestinasiDetail.route}/${it}")
-                })
+            HomeScreen(
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
+                navigateToItemUpdate = { id ->
+                    navController.navigate("${DestinasiDetail.route}/$id")
+                }
+            )
         }
-        composable(DestinasiEntry.route){
-            EntrySiswaScreen(navigateBack = { navController.navigate(DestinasiHome
-                .route) })
+
+        composable(DestinasiEntry.route) {
+            EntrySiswaScreen(
+                navigateBack = { navController.popBackStack() }
+            )
         }
     }
 }
