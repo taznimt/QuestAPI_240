@@ -6,6 +6,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.belajar.modeldata.DetailSiswa
 import com.example.belajar.modeldata.UIStateSiswa
 import com.example.belajar.modeldata.toUiStateSiswa
 import com.example.belajar.repositori.RepositoryDataSiswa
@@ -22,5 +23,9 @@ RepositoryDataSiswa
             uiStateSiswa = repositoryDataSiswa.getSatuSiswa(idSiswa)
                 .toUiStateSiswa(true)
         }
+    }
+    fun updateUiState(detailSiswa: DetailSiswa) {
+        uiStateSiswa =
+            UIStateSiswa(detailSiswa = detailSiswa, isEntryValid = validasiInput(detailSiswa))
     }
 }
