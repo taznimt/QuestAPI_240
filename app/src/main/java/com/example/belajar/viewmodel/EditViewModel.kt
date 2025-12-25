@@ -8,9 +8,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.belajar.modeldata.DetailSiswa
 import com.example.belajar.modeldata.UIStateSiswa
+import com.example.belajar.modeldata.toDataSiswa
 import com.example.belajar.modeldata.toUiStateSiswa
 import com.example.belajar.repositori.RepositoryDataSiswa
 import kotlinx.coroutines.launch
+import retrofit2.Response
+
 
 class EditViewModel(savedStateHandle: SavedStateHandle, private val repositoryDataSiswa:
 RepositoryDataSiswa
@@ -31,6 +34,18 @@ RepositoryDataSiswa
     private fun validasiInput(uiState: DetailSiswa = uiStateSiswa.detailSiswa ): Boolean {
         return with(uiState) {
             nama.isNotBlank() && alamat.isNotBlank() && telpon.isNotBlank()
+        }
+    }
+    suspend fun editSatuSiswa(){
+        if (validasiInput(uiStateSiswa.detailSiswa)){
+            val call: Response<Void> = repositoryDataSiswa.editSatuSiswa(idSiswa,uiStateSiswa
+                .detailSiswa.toDataSiswa())
+
+            if (call.isSuccessful){
+                println("Update Sukses : ${call.message()}")
+            }else{
+                println("Update Error : ${call.errorBody()}")
+            }
         }
     }
 }
