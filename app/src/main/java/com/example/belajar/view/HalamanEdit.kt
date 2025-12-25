@@ -8,6 +8,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.belajar.uicontroller.route.DestinasiEdit
 import com.example.belajar.viewmodel.EditViewModel
 import com.example.belajar.viewmodel.provider.PenyeidaViewModel
 import kotlinx.coroutines.launch
@@ -23,7 +24,7 @@ fun EditSiswaScreen(
     Scaffold(
         topBar = {
             SiswaTopAppBar(
-                title = stringResource(DestinasiEdit.titleRes),
+                title = stringResource(DestinasiEdit.tittleRes),
                 canNavigateBack = true,
                 navigateUp = onNavigateUp
             )

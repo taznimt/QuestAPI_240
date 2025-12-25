@@ -8,8 +8,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.belajar.uicontroller.route.DestinasiDetail
+import com.example.belajar.uicontroller.route.DestinasiEdit
 import com.example.belajar.uicontroller.route.DestinasiEntry
 import com.example.belajar.uicontroller.route.DestinasiHome
+import com.example.belajar.view.DetailSiswaScreen
+import com.example.belajar.view.EditSiswaScreen
 import com.example.belajar.view.EntrySiswaScreen
 import com.example.belajar.view.HomeScreen
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.belajar.modeldata.DataSiswa
 import com.example.belajar.repositori.RepositoryDataSiswa
+import com.example.belajar.uicontroller.route.DestinasiDetail
 import kotlinx.coroutines.launch
 import okio.IOException
 import retrofit2.HttpException

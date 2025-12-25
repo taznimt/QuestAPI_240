@@ -11,6 +11,7 @@ import com.example.belajar.modeldata.UIStateSiswa
 import com.example.belajar.modeldata.toDataSiswa
 import com.example.belajar.modeldata.toUiStateSiswa
 import com.example.belajar.repositori.RepositoryDataSiswa
+import com.example.belajar.uicontroller.route.DestinasiDetail
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
