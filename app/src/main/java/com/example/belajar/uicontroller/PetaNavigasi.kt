@@ -3,9 +3,11 @@ package com.example.belajar.uicontroller
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.belajar.uicontroller.route.DestinasiEntry
 import com.example.belajar.uicontroller.route.DestinasiHome
 import com.example.belajar.view.EntrySiswaScreen
@@ -45,5 +47,19 @@ fun HostNavigasi(
                 }
             })
         }
+        composable(
+            route = DestinasiDetail.routeWithArgs,
+            arguments = listOf(navArgument(DestinasiDetail.itemIdArg) {
+                type = NavType.IntType
+            })
+        ){
+            DetailSiswaScreen(
+                navigateToEditItem = { id ->
+                    navController.navigate("${DestinasiEdit.route}/$id")
+                },
+                navigateBack = { navController.navigate(DestinasiHome.route) }
+            )
+        }
+
     }
 }
