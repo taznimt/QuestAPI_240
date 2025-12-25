@@ -3,14 +3,19 @@ package com.example.belajar.view
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -22,7 +27,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.R
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -31,8 +35,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.belajar.R
 import com.example.belajar.modeldata.DataSiswa
 import com.example.belajar.uicontroller.route.DestinasiHome
+import com.example.belajar.viewmodel.HomeViewModel
+import com.example.belajar.viewmodel.StatusUiSiswa
+import com.example.belajar.viewmodel.provider.PenyeidaViewModel
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,15 +52,18 @@ fun HomeScreen(
     //edit 2.4 : tambahkan parameter navigateToItemUpdate
     navigateToItemUpdate:(Int) -> Unit,
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
+    viewModel: HomeViewModel = viewModel(factory = PenyeidaViewModel.Factory)
 ) {
+    androidx.compose.runtime.LaunchedEffect(Unit) {
+        viewModel.loadSiswa()
+    }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection
         ),
         topBar = {
             SiswaTopAppBar(
-                title = stringResource(DestinasiHome.titleRes),
+                title = stringResource(DestinasiHome.tittleRes),
                 canNavigateBack = false,
                 scrollBehavior = scrollBehavior
             )
@@ -68,8 +81,8 @@ fun HomeScreen(
                     contentDescription = stringResource(R.string.entry_siswa)
                 )
             }
-        },
-    ) { innerPadding ->
+        }
+    ) {innerPadding ->
         HomeBody(
             statusUiSiswa = viewModel.listSiswa,
             onSiswaClick = navigateToItemUpdate,
@@ -80,11 +93,12 @@ fun HomeScreen(
         )
     }
 }
+
 @Composable
 fun HomeBody(
     statusUiSiswa: StatusUiSiswa,
     //edit 2.3 tambahkan parameter onSiswaClick
-    onSiswaValueClick: (Int) -> Unit,
+    onSiswaClick: (Int) -> Unit,
     retryAction: () -> Unit,
     modifier: Modifier = Modifier
 ){
@@ -107,11 +121,16 @@ fun HomeBody(
 }
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
-    Image(
-        modifier = modifier.size(200.dp),
-        painter = painterResource(R.drawable.loading_img),
-        contentDescription = stringResource(R.string.loading)
-    )
+    Box(
+        modifier= modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            modifier = modifier.size(200.dp),
+            painter = painterResource(R.drawable.loading),
+            contentDescription = stringResource(R.string.loading)
+        )
+    }
 }
 
 @Composable
