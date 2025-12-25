@@ -11,4 +11,8 @@
     <string name="retry">Coba Lagi</string>
     <string name="btn_submit">Simpan</string>
     <string name="back">Kembali</string>
+    <string name="attention">Perhatian</string>
+    <string name="delete_confirm">Apakah Anda yakin ingin menghapus data ini?</string>
+    <string name="yes">Ya</string>
+    <string name="no">Tidak</string>
 </resources>
