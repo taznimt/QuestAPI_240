@@ -16,4 +16,5 @@
     <string name="yes">Ya</string>
     <string name="no">Tidak</string>
     <string name="edit_siswa">Edit Data Siswa</string>
+    <string name="detail_siswa">Detail Siswa</string>
 </resources>
