@@ -8,7 +8,7 @@
 |Koneksi buruk|<img width="458" height="717" alt="image" src="https://github.com/user-attachments/assets/4bba5488-8e21-4b32-b5fc-07c22f006b68" />|
 |tambahSiswa|<img width="355" height="695" alt="image" src="https://github.com/user-attachments/assets/13049e8e-6c00-4317-98a0-d5aeadadcd6e" />|
 |Loading|<img width="432" height="705" alt="image" src="https://github.com/user-attachments/assets/3ded33f9-49e7-45ad-841c-28b45e3b7892" />|
-|HalamanDetailSiswa|<img width="428" height="746" alt="image" src="https://github.com/user-attachments/assets/465d5bd4-b2a1-46e7-8351-b61fb652fbed" />|
+|HalamanEditSiswa|<img width="428" height="746" alt="image" src="https://github.com/user-attachments/assets/465d5bd4-b2a1-46e7-8351-b61fb652fbed" />|
 |Edit|<img width="418" height="743" alt="image" src="https://github.com/user-attachments/assets/3c9a0c2f-83c3-4416-b422-02311f70da02" />|
 |Hapus|<img width="496" height="728" alt="image" src="https://github.com/user-attachments/assets/aa60eb37-2beb-4caa-8ca8-cbf1c6a3deb8" />|
 |Berhasil dihapus|<img width="508" height="761" alt="image" src="https://github.com/user-attachments/assets/bda15463-3430-4b64-87bb-fc3b058c5c6a" />|
